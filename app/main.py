@@ -39,12 +39,12 @@ async def health_check():
         "openai_configured": bool(settings.OPENAI_API_KEY),
     }
 
-# Import routers (will be created in next tickets)
-# from app.routers import demand, ocr, recommendations, chat
-# app.include_router(demand.router, prefix="/api/v1", tags=["Demand Forecasting"])
-# app.include_router(ocr.router, prefix="/api/v1", tags=["Invoice OCR"])
-# app.include_router(recommendations.router, prefix="/api/v1", tags=["Recommendations"])
-# app.include_router(chat.router, prefix="/api/v1", tags=["Chatbot"])
+# Import routers
+from app.routers import demand, ocr, recommendations, chat
+app.include_router(demand.router, prefix="/api/v1", tags=["Demand Forecasting"])
+app.include_router(ocr.router, prefix="/api/v1", tags=["Invoice OCR"])
+app.include_router(recommendations.router, prefix="/api/v1", tags=["Recommendations"])
+app.include_router(chat.router, prefix="/api/v1", tags=["Chatbot"])
 
 if __name__ == "__main__":
     import uvicorn
