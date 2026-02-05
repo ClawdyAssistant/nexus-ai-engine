@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ai-engine:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENVIRONMENT=development
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./app:/app/app
+    restart: unless-stopped
